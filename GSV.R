@@ -3,7 +3,7 @@ if (!require(xts, tseries, lmtest, fGarch)){
   install.packages('xts', 'tseries', 'lmtest', 'fGarch')}
 if (!require(dplyr, sandwich)) install.packages('dplyr', 'sandwich')
 #importing daily prices
-df <- read.csv("PricesAd.csv")
+df <- read.csv("Prices.csv")
 df$Date <- as.Date( as.character(df$Date), "%d-%b-%y")
 # library(dplyr) 
 # df <- df %>% #alternative to line 10
