@@ -1,4 +1,3 @@
-setwd("/Users/Mohamad/Documents/GSV")
 #check for required packages
 if (!require(xts, tseries, lmtest, fGarch)){ 
   install.packages('xts', 'tseries', 'lmtest', 'fGarch')}
