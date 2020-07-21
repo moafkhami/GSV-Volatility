@@ -1,5 +1,3 @@
-setwd("/Users/Mohamad/Documents/Github/GSV")
-
 if (!require(xts, tseries, lmtest, fGarch)){ 
   install.packages('xts', 'tseries', 'lmtest', 'fGarch')}
 if (!require(dplyr, sandwich, gtrendsR, BatchGetSymbols)) {
@@ -94,7 +92,7 @@ for (i in 1:ncol(WeeklyRet)){
   GarchEst[2*i-1, 6] = fitted@fit$llh
   GarchEst[2*i-1, 7] = fitted@fit$ics[1]
   Params[, 2*i-1] = log(residuals(fitted)^2)
-  Params[, 2*i] = fitted@h.t*1000
+  Params[, 2*i] = Params[, 2*i] = fitted@h.t*1000
   #Extracting residuals and conditional variance
 }
 GarchEst[is.na(GarchEst)] <- ""
@@ -159,16 +157,19 @@ for (i in 1:ncol(WeeklyRet)){
     }
   }
 }
+tryCatch({
 OneKey <- data.frame(matrix(unlist(onelist), nrow=length(onelist), byrow=T))
 colnames(OneKey) <- c("Security", "Term", "beta_0", "beta_1", "k_1",
-                      "t_beta_0", "t_beta_1", "t_k_1", "Adj.R.Sq")
+                      "t_beta_0", "t_beta_1", "t_k_1", "Adj.R.Sq")},
+error=function(cond) {message("These keywords can't help with prediction")
+})
 #OneKey <- OneKey[order(OneKey$Adj.R.Sq,decreasing = TRUE),]
+
+tryCatch({
 TwoKey <- data.frame(matrix(unlist(twolist), nrow=length(twolist), byrow=T))
 colnames(TwoKey) <- c("Security", "Term1", "Term2", "beta_0", "beta_1", "k_1", "k_2",
-                      "t_beta_0", "t_beta_1", "t_k_1", "t_k_2", "Adj.R.Sq", "improvement")
+                      "t_beta_0", "t_beta_1", "t_k_1", "t_k_2",
+                      "Adj.R.Sq", "improvement")},
+error=function(cond) {message("These keywords can't help with prediction")
+})
 TwoKey <- TwoKey[order(TwoKey$Adj.R.Sq,decreasing = TRUE),]
-#ThreeKey <- data.frame(matrix(unlist(threelist), nrow=length(threelist), byrow=T))
-#colnames(ThreeKey) <- c("Commodity", "Term1", "Term2", "Term3", "beta_0", "beta_1",
-#                        "k_1", "k_2", "k_3", "t_beta_0", "t_beta_1", "t_k_1", "t_k_2",
-#                        "t_k_3", "Adj.R.Sq", "improvement")
-#ThreeKey <- ThreeKey[order(ThreeKey$Adj.R.Sq, decreasing = TRUE),]
