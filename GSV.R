@@ -62,7 +62,7 @@ for (i in 1:ncol(WeeklyRet)){
   GarchEst[2*i-1, 6] = fitted@fit$llh
   GarchEst[2*i-1, 7] = fitted@fit$ics[1]
   Params[, 2*i-1] = log(residuals(fitted)^2)
-  Params[, 2*i] = volatility(fitted)*1000
+  Params[, 2*i] = fitted@h.t
   #Extracting residuals and conditional variance
 }
 GarchEst[is.na(GarchEst)] <- ""
