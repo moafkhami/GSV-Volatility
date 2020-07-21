@@ -14,7 +14,7 @@ The **Prices.csv** file includes daily nominal and real prices of Brent crude oi
 To run the analysis in the **GSV.R** script, you would need to download Google Search Volume data from [Google Trends](https://trends.google.com) *separately* for each keyword. 
 These data should then be incorporated in a single CSV file such that the first column is the data and the rest are the GSV data of that date.
 
-**GeneralGSV.R** extracts data directly from the web using *BatchGetSymbols* and *gtrendsR*.
+**GeneralGSV.R** extracts data directly from the web using *BatchGetSymbols* and *gtrendsR*. Note that right now Google limits the availability of weekly trends series to only 5 years of data.
 ### Required packages
 Required packages are mentioned in the script.
 
