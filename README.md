@@ -3,6 +3,8 @@
 ## Introduction
 The **Google-Search-Energy.ipynb** notebook provides a summary and step-by-step exectution of the analysis preformed in [Google search keywords that best predict energy price volatility](https://www.sciencedirect.com/science/article/pii/S0140988317302517).
 
+The **Volatility-Google.ipynb** notebook provides a generalized framework of automatic extraction of search volume and market price data, and using Google Search Volume to predict price volatilty for any market security.
+
 The **GSV.R** file associated with this project replicates the analysis of [Google search keywords that best predict energy price volatility](https://www.sciencedirect.com/science/article/pii/S0140988317302517).
 The code can be easily used to predict/explain volatility of any price or time series using two-step GARCH and Google Search Volume for relevant keywords as an additional explanatory variable.
 
